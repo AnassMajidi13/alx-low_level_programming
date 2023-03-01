@@ -1,39 +1,25 @@
-#include "holberton.h"
+#include "main.h"
+#include <stdio.h>
 
 /**
- * cap_string - capitalize all words of a string
- * @str: string
- * Return: `str`
+ * print_array - prints n elements of an array of integers
+ *
+ * @a: the array to print
+ * @n: the number of elements to print
  */
-
-char *cap_string(char *str)
+void print_array(int *a, int n)
 {
-	int i, c;
-	int trigger;
-	char nots[] = ",;.!?(){}\n\t\" ";
+	int i;
 
-	for (i = 0, trigger = 0; str[i] != '\0'; i++)
+	if (a == 0)
+		return;
+
+	for (i = 0; i < n; i++)
 	{
-		if (str[0] > 96 && str[0] < 123)
-			trigger = 1;
-		for (c = 0; nots[c] != '\0'; c++)
-		{
-			if (nots[c] == str[i])
-				trigger = 1;
-		}
-
-		if (trigger)
-		{
-			if (str[i] > 96 && str[i] < 123)
-			{
-				str[i] -= 32;
-				trigger = 0;
-			}
-			else if (str[i] > 64 && str[i] < 91)
-				trigger = 0;
-			else if (str[i] > 47 && str[i] < 58)
-				trigger = 0;
-		}
+		printf("%d", *(a + i));
+		if (i != n - 1)
+			printf(", ");
 	}
-	return (str);
+
+	printf("\n");
 }
